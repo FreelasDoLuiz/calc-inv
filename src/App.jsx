@@ -128,7 +128,8 @@ const MoneyDataSchema = z.object({
     .transform((val) => Number(val.replace(/\./g, '').replace(',', '.')))
     .refine((val) => val > 0, {
       message: 'A taxa deve ser maior que zero'
-    }),
+    })
+    .nullable(),
   periodo: z
     .string()
     .regex(/^\d+$/, 'O período deve ser um número inteiro positivo')
@@ -140,7 +141,7 @@ const MoneyDataSchema = z.object({
 
 export default function App() {
   const containerRef = useRef(null)
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(2)
   const [height, setHeight] = useState(0)
   const [result, setResult] = useState(null)
 
@@ -259,8 +260,10 @@ export default function App() {
       meses = periodo * 12
     }
 
+    console.log(tipoDeTaxa)
+
     const taxaValue =
-      tipoDeTaxa === 'cdi'
+      tipoDeTaxa === '+CDI'
         ? 0
         : Number(taxa.replace(/\./g, '').replace(',', '.'))
     const aporteInicialValue = Number(
@@ -340,7 +343,7 @@ export default function App() {
 
         const ano = futureDate.getFullYear()
         const ipcaAno = cdi[ano]?.Media
-          ? cdi[ano]?.Medi * 1.2
+          ? cdi[ano]?.Media * 1.2
           : cdi[anoFinal].Media * 1.2 // pega do ano ou último disponível
 
         const ipcaMes = ipcaAno / 12 / 100
