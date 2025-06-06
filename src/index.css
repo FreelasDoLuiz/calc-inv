@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  background-color: #f1f1f1;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust width for thin scrollbar */
+  height: 8px; /* Adjust height for thin scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(82, 82, 82, 0); /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(59, 130, 246); /* Scrollbar thumb color */
+  border-radius: 10px; /* Rounded scrollbar thumb */
+  border: 2px solid rgb(82, 82, 82, 0); /* Padding around scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(82 82 82); /* Scrollbar thumb color on hover */
+}
+
+/* Hide scrollbar arrows */
+::-webkit-scrollbar-button {
+  display: none;
+}
